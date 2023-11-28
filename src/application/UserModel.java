@@ -22,10 +22,68 @@ public class UserModel
                               userPassword, isVIPUser,isAdmin );    
    }
    
+   // Getter and Setter methods for 'username'
+   public String getUsername() {
+       return username;
+   }
+
+   public void setUsername(String username) {
+       this.username = username;
+   }
+
+   // Getter and Setter methods for 'firstName'
+   public String getFirstName() {
+       return firstName;
+   }
+
+   public void setFirstName(String firstName) {
+       this.firstName = firstName;
+   }
+
+   // Getter and Setter methods for 'lastName'
+   public String getLastName() {
+       return lastName;
+   }
+
+   public void setLastName(String lastName) {
+       this.lastName = lastName;
+   }
+
+   // Getter and Setter methods for 'userPassword'
+   public String getUserPassword() {
+       return userPassword;
+   }
+
+   public void setUserPassword(String userPassword) {
+       this.userPassword = userPassword;
+   }
+
+   // Getter and Setter methods for 'isVIPUser'
+   public boolean isVIPUser() {
+       return isVIPUser;
+   }
+
+   public void setVIPUser(boolean VIPUser) {
+       isVIPUser = VIPUser;
+   }
+
+   // Getter and Setter methods for 'isAdmin'
+   public boolean isAdmin() {
+       return isAdmin;
+   }
+
+   public void setAdmin(boolean admin) {
+       isAdmin = admin;
+   }
+
+   
+   public void setUser(User user) {
+      this.user = user;
+ 
+   }
+   
    public User checkLogin(String username, String password) throws IOException
    {
-
-
       try (Connection con = DatabaseConnection.getConnection();
                Statement stmt = con.createStatement();)
       {
@@ -51,12 +109,7 @@ public class UserModel
                {
                   System.out.println(e);
                }
-           
             }
-            else
-            {
-            }
-
          }
       }
       catch (SQLException e)
@@ -66,13 +119,34 @@ public class UserModel
       return this.user;
    }
    
-   public String getUsername() {
-      return user.getUsername();
+   public void insertNewUser() throws IOException
+   {
+      System.out.println(this.getUsername());
+      try (Connection con = DatabaseConnection.getConnection();
+               Statement stmt = con.createStatement();)
+      {
+         String query = "INSERT INTO User VALUES (\"" + this.getUsername() + "\", " +
+                        "\"" + this.getFirstName() + "\", " +
+                        "\"" + this.getLastName() + "\", " +
+                        "\"" + this.getUserPassword() + "\", " +
+                        (this.isAdmin() ? 1 : 0) + ", " +
+                        (this.isVIPUser() ? 1 : 0) + ")";
+         System.out.println(query);
+         int result = stmt.executeUpdate(query);
+
+         if (result == 1)
+         {
+            System.out.println("Insert into table user executed successfully");
+            System.out.println(result + " row(s) affected");
+         }
+      }
+      catch (SQLException e)
+      {
+         System.out.println(e.getMessage());
+      }
    }
    
-   public boolean isAdmin() {
-      return user.isAdmin();
-   }
+
    
    public boolean checkUserExists(String username) throws IOException
    {

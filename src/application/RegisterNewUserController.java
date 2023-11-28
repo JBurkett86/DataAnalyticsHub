@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 
 public class RegisterNewUserController
 {
-   private User currentUser;
+   private User newUser;
    private UserModel userModel;
    
    public RegisterNewUserController() throws UserException
@@ -48,7 +48,14 @@ public class RegisterNewUserController
    private void registerNewUser() throws IOException
    {
       if(validUserInput()) {
-         //TODO insert into DB
+         userModel.setUsername(username.getText().toString());
+         userModel.setFirstName(firstname.getText().toString());
+         userModel.setLastName(lastname.getText().toString());
+         userModel.setUserPassword(password.getText().toString());
+         userModel.setAdmin(false);
+         userModel.setVIPUser(false);
+         userModel.setUser(newUser);
+         userModel.insertNewUser();
       }
    }
    
@@ -56,8 +63,7 @@ public class RegisterNewUserController
    {
       // Initial field validation.
       boolean valid = true;
-
-
+      
       if (username.getText() == null || username.getText().trim().isEmpty()) {
          username.setPromptText("Username required");
          username.setStyle("-fx-text-fill: red;");
@@ -91,8 +97,6 @@ public class RegisterNewUserController
      }
      return valid;
    }
-   
-
    
    
    public void userLogOut(ActionEvent event) throws IOException {

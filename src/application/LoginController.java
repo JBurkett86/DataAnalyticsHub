@@ -39,8 +39,7 @@ public class LoginController
 
    public void userLogin(ActionEvent event) throws IOException
    {
-      Main m = new Main();// Create new object
-      
+      Main m = new Main();// Create new object  
       currentUser = userModel.checkLogin(username.getText().toString(), password.getText().toString());
       System.out.println(currentUser.getUsername());
       // If user type is Admin go to Admin pages.
@@ -64,7 +63,6 @@ public class LoginController
 
    public void userRegister(ActionEvent event) throws IOException
    {
-      // TODO
       registerNewUser();
    }
 
