@@ -77,9 +77,14 @@ public class UserModel
    }
 
    
-   public void setUser(User user) {
-      this.user = user;
+   public void setUser(User user) throws UserException {
+      this.user = new User(this.getUsername(),  this.getFirstName(), this.getLastName(), 
+                           this.getUserPassword(), this.isVIPUser(), this.isAdmin() );
  
+   }
+   
+   public User getUser() {
+      return user;
    }
    
    public User checkLogin(String username, String password) throws IOException
@@ -121,7 +126,6 @@ public class UserModel
    
    public void insertNewUser() throws IOException
    {
-      System.out.println(this.getUsername());
       try (Connection con = DatabaseConnection.getConnection();
                Statement stmt = con.createStatement();)
       {
@@ -137,6 +141,32 @@ public class UserModel
          if (result == 1)
          {
             System.out.println("Insert into table user executed successfully");
+            System.out.println(result + " row(s) affected");
+         }
+      }
+      catch (SQLException e)
+      {
+         System.out.println(e.getMessage());
+      }
+   }
+   
+   public void updateUser(String currentUsername) throws IOException
+   {
+      try (Connection con = DatabaseConnection.getConnection();
+               Statement stmt = con.createStatement();)
+      {
+         String query = "UPDATE User SET Username = \"" + this.getUsername() + 
+                  "\", FirstName = \"" + this.getFirstName() + 
+                  "\", LastName = \"" + this.getLastName() + 
+                  "\", UserPassword = \"" + this.getUserPassword() + 
+                  "\", IsVIPUser = " + (this.isAdmin() ? 1 : 0) + 
+                  ", IsAdmin = " + (this.isVIPUser() ? 1 : 0) + 
+                  " WHERE Username == \"" + currentUsername +"\"";
+         int result = stmt.executeUpdate(query);
+
+         if (result == 1)
+         {
+            System.out.println("Update table user executed successfully");
             System.out.println(result + " row(s) affected");
          }
       }

@@ -1,10 +1,6 @@
 package application;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,24 +9,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegisterNewUserController
+public class UserProfileController
 {
-   private User newUser;
+   private User currentUser;
    private UserModel userModel;
    
-   public RegisterNewUserController() throws UserException
+   public UserProfileController() throws UserException
    {
       userModel = new UserModel();
+      UserHolder holder = UserHolder.getInstance();
+      currentUser = holder.getUser();    
    }
-
-   @FXML
-   private Button button;
-   @FXML
-   private Button logout; // Back button.
-   @FXML
-   private Button register;
-   @FXML
-   private Label invalidUserText;
+   
    @FXML
    private TextField username;
    @FXML
@@ -39,24 +29,45 @@ public class RegisterNewUserController
    private TextField lastname;
    @FXML
    private PasswordField password;
+   @FXML
+   private Label invalidUserText;
+   @FXML
+   private Button logout;
+   @FXML
+   private Button editprofile;
    
-   public void registerUser(ActionEvent event) throws IOException, UserException {
-      registerNewUser();
-         
+   @FXML
+   public void initialize() {
+      username.setText(currentUser.getUsername());
+      firstname.setText(currentUser.getFirstName()); 
+      lastname.setText(currentUser.getLastName()); 
+      password.setText(currentUser.getUserPassword()); 
    }
    
-   private void registerNewUser() throws IOException, UserException
-   {
+
+   public void userLogOut(ActionEvent event) throws IOException {
+      Main m = new Main();
+      UserHolder holder = UserHolder.getInstance();
+      holder.setUser(currentUser);
+      m.changeScene("NormalUser.fxml");
+   }
+   
+   public void updateProfile(ActionEvent event) throws IOException, UserException {
+      // Check existing user
+      // check fields aren't blank
       if(validUserInput()) {
+         
          userModel.setUsername(username.getText().toString());
          userModel.setFirstName(firstname.getText().toString());
          userModel.setLastName(lastname.getText().toString());
          userModel.setUserPassword(password.getText().toString());
          userModel.setAdmin(false);
          userModel.setVIPUser(false);
-         userModel.setUser(newUser);
-         userModel.insertNewUser();
+         userModel.updateUser(currentUser.getUsername());
+         userModel.setUser(userModel.getUser());
+         currentUser = userModel.getUser();
       }
+      
    }
    
    private boolean validUserInput() throws IOException
@@ -91,17 +102,14 @@ public class RegisterNewUserController
          valid = false;
       }
       
-     if (userModel.checkUserExists(username.getText().toString())) {
+      
+     if (!(currentUser.getUsername().equals(username.getText().toString())) 
+              && (userModel.checkUserExists(username.getText().toString()))) {
+        System.out.println("Current user: " + currentUser.getUsername());
+        System.out.println("UI user: " + username.getText().toString());
         invalidUserText.setText("Username already exists. Try another.");
         valid = false;
      }
      return valid;
    }
-   
-   
-   public void userLogOut(ActionEvent event) throws IOException {
-      Main m = new Main();
-      m.changeScene("Login.fxml");
-   }
-
 }

@@ -21,6 +21,9 @@ public class Main extends Application {
 		   stage = primaryStage;
 		   primaryStage.setResizable(false);
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Login.fxml"));
+			
+
+			
 			Scene scene = new Scene(root,600,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Data Analytics Hub");
@@ -33,7 +36,7 @@ public class Main extends Application {
 	
 
    public void changeScene(String fxml) throws IOException {
-       Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+       Parent pane = FXMLLoader.load(getClass().getResource(fxml));       
        stage.getScene().setRoot(pane);
    }
 	

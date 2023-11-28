@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NormalUserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NormalUserController">
    <top>
       <AnchorPane prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -21,7 +20,23 @@
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Label>
+            <Button fx:id="editprofile" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#editProfile" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FFFFFF;" text="Edit Profile">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="welcome" contentDisplay="CENTER" layoutX="193.0" layoutY="14.0" prefHeight="21.0" prefWidth="215.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Ubuntu Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

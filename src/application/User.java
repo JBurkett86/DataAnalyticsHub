@@ -40,7 +40,7 @@ public class User
     * @param IsAdmin IF the user is a high authorised account.
     * @throws UserException if username or passwords are blank.
     */
-   public User( String Username, String FirstName, String LastName, String UserPassword, 
+   public User(String Username, String FirstName, String LastName, String UserPassword, 
                 boolean IsVIPUser, boolean IsAdmin) throws UserException
    {
       
