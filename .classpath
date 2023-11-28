@@ -16,5 +16,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/sqlite-jdbc/sqlite-jdbc-3.44.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/sqlite-jdbc/slf4j-api-1.7.36.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
