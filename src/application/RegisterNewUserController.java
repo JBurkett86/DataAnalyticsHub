@@ -56,6 +56,8 @@ public class RegisterNewUserController
          userModel.setVIPUser(false);
          userModel.setUser(newUser);
          userModel.insertNewUser();
+         invalidUserText.setText("Account created sucessfully.");
+         invalidUserText.setStyle("-fx-text-fill: green;");
       }
    }
    
@@ -87,11 +89,13 @@ public class RegisterNewUserController
       
       if (password.getText() == null || password.getText().trim().isEmpty()) {
          invalidUserText.setText("A password is required!");
+         invalidUserText.setStyle("-fx-text-fill: red;");
          password.setStyle("-fx-border-color: red;");
          valid = false;
       }
       
      if (userModel.checkUserExists(username.getText().toString())) {
+        invalidUserText.setStyle("-fx-text-fill: red;");
         invalidUserText.setText("Username already exists. Try another.");
         valid = false;
      }

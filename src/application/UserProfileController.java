@@ -66,6 +66,8 @@ public class UserProfileController
          userModel.updateUser(currentUser.getUsername());
          userModel.setUser(userModel.getUser());
          currentUser = userModel.getUser();
+         invalidUserText.setText("Account updated sucessfully.");
+         invalidUserText.setStyle("-fx-text-fill: green;");
       }
       
    }
@@ -98,6 +100,7 @@ public class UserProfileController
       
       if (password.getText() == null || password.getText().trim().isEmpty()) {
          invalidUserText.setText("A password is required!");
+         invalidUserText.setStyle("-fx-text-fill: red;");
          password.setStyle("-fx-border-color: red;");
          valid = false;
       }
@@ -107,6 +110,7 @@ public class UserProfileController
               && (userModel.checkUserExists(username.getText().toString()))) {
         System.out.println("Current user: " + currentUser.getUsername());
         System.out.println("UI user: " + username.getText().toString());
+        invalidUserText.setStyle("-fx-text-fill: red;");
         invalidUserText.setText("Username already exists. Try another.");
         valid = false;
      }
