@@ -19,12 +19,15 @@ import java.sql.Statement;
 
 public class LoginController
 {
-   
-   public LoginController() {
-      
-   }
-   
    private User currentUser;
+   private UserModel userModel;
+   
+   public LoginController() throws UserException
+   {
+      userModel = new UserModel();
+   }
+
+  
    @FXML
    private Button button;
    @FXML
@@ -33,73 +36,55 @@ public class LoginController
    private TextField username;
    @FXML
    private PasswordField password;
-   
-   
-   
-   
-   public void userLogin(ActionEvent event) throws IOException {
-      checkLogin();
 
-  }
-   
-   public void userRegister(ActionEvent event) throws IOException {
-      //TODO
-      // Check validation username doesnt exist, then no blanks ,etc.
-
-      validateUserLogin();
-
-  }
-   
-   
-   public void userExit(ActionEvent event) throws IOException {
-      exitApplication();
-
-  }
-   
-   private void checkLogin() throws IOException {
-
-      Main m = new Main();//Create new object
-      try (Connection con = DatabaseConnection.getConnection();
-               Statement stmt = con.createStatement();) {
-            String query = "SELECT * FROM User WHERE Username=\"" + username.getText().toString() + 
-            "\" AND UserPassword = \"" + password.getText().toString() + "\"";
-            try (ResultSet resultSet = stmt.executeQuery(query)) {
-               
-               if(resultSet.next()) {
-                  try 
-                  {
-                  currentUser = new User(resultSet.getString("Username"),resultSet.getString("FirstName"), resultSet.getString("LastName"),
-                                         resultSet.getString("UserPassword"),resultSet.getBoolean("IsVIPUser"), resultSet.getBoolean("IsAdmin"));
-                  }
-                  catch (UserException e)
-                  {
-                     wrongLogin.setText(e.toString());
-                  }
-                  // If user type is Admin go to Admin pages.
-                  if (currentUser.isAdmin()) {
-                     //TODO
-                     //m.ChangeSecen"AdminUser.fxml");       
-                  } else {
-                     m.changeScene("NormalUser.fxml");
-                  }
-
-               } else {
-                  wrongLogin.setText("Invalid username or password!");
-               }
-            
-            } 
-         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-         }
-  }
-   
-   private void validateUserLogin() throws IOException {
+   public void userLogin(ActionEvent event) throws IOException
+   {
+      Main m = new Main();// Create new object
       
+      currentUser = userModel.checkLogin(username.getText().toString(), password.getText().toString());
+      System.out.println(currentUser.getUsername());
+      // If user type is Admin go to Admin pages.
+      if (currentUser.getUsername() != null) {
+         if (currentUser.isAdmin())
+         {
+            // TODO
+            // m.changeScene("AdminUser.fxml");
+         }
+         else
+         {
+            m.changeScene("NormalUser.fxml");
+         }
+         
+      } else {
+         wrongLogin.setText("Invalid username or password!");
+      }
+      
+      //TODO retrieveUser();
    }
+
+   public void userRegister(ActionEvent event) throws IOException
+   {
+      // TODO
+      registerNewUser();
+   }
+
+   public void userExit(ActionEvent event) throws IOException
+   {
+      exitApplication();
+   }
+
    
-   private void exitApplication() throws IOException {
+
+   private void registerNewUser() throws IOException
+   {
+      Main m = new Main();
+      m.changeScene("RegisterNewUser.fxml");
+
+   }
+
+   private void exitApplication() throws IOException
+   {
       System.exit(0);
    }
-   
 
 }
