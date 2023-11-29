@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -17,7 +18,7 @@
                   <Font name="Ubuntu Bold" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="239.0" layoutY="18.0" text="Create Profile" textFill="WHITE">
+            <Label layoutX="240.0" layoutY="18.0" text="Add New Post" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
@@ -28,40 +29,51 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="username" layoutX="286.0" layoutY="54.0" />
-            <TextField fx:id="firstname" layoutX="286.0" layoutY="93.0" />
-            <TextField fx:id="lastname" layoutX="286.0" layoutY="134.0" />
-            <PasswordField fx:id="password" layoutX="286.0" layoutY="173.0" />
-            <Label layoutX="207.0" layoutY="59.0" text="Username" textAlignment="RIGHT" textFill="WHITE">
+            <TextField fx:id="postid" layoutX="286.0" layoutY="15.0" prefHeight="25.0" prefWidth="101.0" />
+            <TextField fx:id="likes" layoutX="286.0" layoutY="114.0" />
+            <TextField fx:id="shares" layoutX="286.0" layoutY="146.0" />
+            <PasswordField fx:id="mainpostid" layoutX="286.0" layoutY="180.0" />
+            <Label layoutX="221.0" layoutY="20.0" text="Post ID" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="202.0" layoutY="98.0" text="First Name" textAlignment="RIGHT" textFill="WHITE">
+            <Label layoutX="235.0" layoutY="119.0" text="Likes" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="206.0" layoutY="139.0" text="Last Name" textAlignment="RIGHT" textFill="WHITE">
+            <Label layoutX="227.0" layoutY="151.0" text="Shares" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="212.0" layoutY="178.0" text="Password" textAlignment="RIGHT" textFill="WHITE">
+            <Label layoutX="190.0" layoutY="185.0" text="Main Post ID" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="register" layoutX="261.0" layoutY="254.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="28.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF;" text="Register">
+            <Button fx:id="addpost" layoutX="203.0" layoutY="268.0" mnemonicParsing="false" onAction="#addPost" prefHeight="28.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF;" text="Add Post">
                <font>
                   <Font name="Ubuntu Bold" size="14.0" />
                </font>
             </Button>
-            <Label fx:id="invalidUserText" alignment="CENTER" layoutX="194.0" layoutY="224.0" prefHeight="16.0" prefWidth="240.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="invalidUserText" alignment="CENTER" layoutX="181.0" layoutY="213.0" prefHeight="16.0" prefWidth="240.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font name="Ubuntu Light" size="14.0" />
                </font>
             </Label>
+            <Button fx:id="cancel" layoutX="309.0" layoutY="268.0" mnemonicParsing="false" onAction="#cancel" prefHeight="28.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF;" text="Cancel">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="218.0" layoutY="69.0" text="Content" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="content" layoutX="286.0" layoutY="47.0" prefHeight="60.0" prefWidth="203.0" />
          </children>
       </AnchorPane>
    </center>

@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AddPostController
@@ -31,13 +30,15 @@ public class AddPostController
    @FXML
    private Label invalidUserText;
    @FXML
-   private TextField username;
+   private TextField postid;
    @FXML
-   private TextField firstname;
+   private TextField content;
    @FXML
-   private TextField lastname;
+   private TextField likes;
    @FXML
-   private PasswordField password;
+   private TextField shares;
+   @FXML
+   private TextField mainpostid;
    
    public void addPost(ActionEvent event) throws IOException, UserException {
       AddPost();
@@ -47,6 +48,7 @@ public class AddPostController
    private void AddPost() throws IOException, UserException
    {
       if(validAddPostInput()) {
+         /*
          userModel.setUsername(username.getText().toString());
          userModel.setFirstName(firstname.getText().toString());
          userModel.setLastName(lastname.getText().toString());
@@ -57,6 +59,7 @@ public class AddPostController
          userModel.insertNewUser();
          invalidUserText.setText("Account created sucessfully.");
          invalidUserText.setStyle("-fx-text-fill: green;");
+         */
       }
    }
    
@@ -64,7 +67,7 @@ public class AddPostController
    {
       // Initial field validation.
       boolean valid = true;
-      
+      /*
       if (username.getText() == null || username.getText().trim().isEmpty()) {
          username.setPromptText("Username required");
          username.setStyle("-fx-text-fill: red;");
@@ -98,7 +101,9 @@ public class AddPostController
         invalidUserText.setText("Username already exists. Try another.");
         valid = false;
      }
+     */
      return valid;
+     
    }
    
    public void cancel(ActionEvent event) throws IOException {
