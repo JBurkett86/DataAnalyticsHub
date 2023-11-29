@@ -21,6 +21,8 @@ Welcome to the Data Analytics Hub Java App! This application provides a platform
 2. Open the project in your preferred Java IDE (Integrated Development Environment).
 
 3. Build and run the application.
+   
+4. The linked SQLite database** DataAnalyticsHub.db** must be kept in the root application directory for data persistance.
 
 ## Features
 
