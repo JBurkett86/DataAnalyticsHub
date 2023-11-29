@@ -29,13 +29,51 @@ public class NormalUserController
       welcome.setText("Welcome " + currentUser.getFirstName()); 
    }
    
-  
+   // Header Buttons
    @FXML
-   private Button logout;
-   
+   private Button logout;   
    @FXML
    private Button editprofile;
+   //Main window buttons
+   @FXML
+   private Button addpost;   
+   @FXML
+   private Button retrievepost;
+   @FXML
+   private Button retrievereplies;   
+   @FXML
+   private Button removepost;
+   @FXML
+   private Button retrievetoplikes;   
+   @FXML
+   private Button retrievetopshares;
    
+   public void addPost(ActionEvent event) throws IOException {
+      Main m = new Main();
+      //m.changeScene("UserProfile.fxml");
+   }
+   
+   public void retrievePost(ActionEvent event) throws IOException {
+      // TODO
+   }
+   
+   public void retrieveReplies(ActionEvent event) throws IOException {
+   // TODO
+   }
+   
+   public void removePost(ActionEvent event) throws IOException {
+   // TODO
+   }
+   
+   public void retrieveTopLikes(ActionEvent event) throws IOException {
+   // TODO
+   }
+   
+   public void retrieveTopShares(ActionEvent event) throws IOException {
+   // TODO
+   }
+   
+   // Go back to login page and ommit current user.
    public void userLogOut(ActionEvent event) throws IOException {
       Main m = new Main();
       m.changeScene("Login.fxml");

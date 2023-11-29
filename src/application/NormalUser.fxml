@@ -36,6 +36,36 @@
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Label>
+            <Button fx:id="addpost" layoutX="24.0" layoutY="49.0" mnemonicParsing="false" onAction="#addPost" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #FFFFFF;" text="Add Post" textAlignment="CENTER">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="retrievetophares" layoutX="25.0" layoutY="197.0" mnemonicParsing="false" onAction="#retrieveTopShares" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFFFFF;" text="Retrieve Top Shares" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="retrievetoplikes" layoutX="25.0" layoutY="250.0" mnemonicParsing="false" onAction="#retrieveTopLikes" prefHeight="44.0" prefWidth="133.0" style="-fx-background-color: #FFFFFF;" text="Retrieve Top Likes" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="retrievereplies" layoutX="25.0" layoutY="123.0" mnemonicParsing="false" onAction="#retrieveReplies" prefHeight="28.0" prefWidth="134.0" style="-fx-background-color: #FFFFFF;" text="Retrieve Replies" textAlignment="CENTER">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="retrievePost" layoutX="25.0" layoutY="86.0" mnemonicParsing="false" onAction="#retrievePost" prefHeight="28.0" prefWidth="134.0" style="-fx-background-color: #FFFFFF;" text="Retrieve Post" textAlignment="CENTER">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="removepost" layoutX="25.0" layoutY="160.0" mnemonicParsing="false" onAction="#removePost" prefHeight="28.0" prefWidth="134.0" style="-fx-background-color: #FFFFFF;" text="Remove Post" textAlignment="CENTER">
+               <font>
+                  <Font name="Ubuntu Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>
