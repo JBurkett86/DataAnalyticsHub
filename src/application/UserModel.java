@@ -135,7 +135,6 @@ public class UserModel
                         "\"" + this.getUserPassword() + "\", " +
                         (this.isAdmin() ? 1 : 0) + ", " +
                         (this.isVIPUser() ? 1 : 0) + ")";
-         System.out.println(query);
          int result = stmt.executeUpdate(query);
 
          if (result == 1)

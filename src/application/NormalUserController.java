@@ -50,7 +50,7 @@ public class NormalUserController
    
    public void addPost(ActionEvent event) throws IOException {
       Main m = new Main();
-      //m.changeScene("UserProfile.fxml");
+      m.changeScene("AddPost.fxml");
    }
    
    public void retrievePost(ActionEvent event) throws IOException {
